@@ -1,0 +1,13 @@
+<IfModule mod_charset.c>
+    CharsetDisable On
+</IfModule>
+AddDefaultCharset UTF-8
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule ^$ public/ [L]
+	RewriteRule ^cgi-bin/ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
